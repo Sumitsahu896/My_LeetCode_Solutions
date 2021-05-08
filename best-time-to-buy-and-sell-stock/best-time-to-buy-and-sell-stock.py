@@ -11,7 +11,7 @@ class Solution:
             if price < min:
                 min = price
                 max = price
-                continue
+                
                 
             elif price > max:
                 max = price
