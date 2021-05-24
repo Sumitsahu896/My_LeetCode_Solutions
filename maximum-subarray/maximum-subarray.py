@@ -1,5 +1,5 @@
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
+    # def maxSubArray(self, nums: List[int]) -> int:
 # Brute Force
 #         max_subarray = -math.inf
 #         for i in range(len(nums)):
@@ -12,13 +12,15 @@ class Solution:
 
 # Dynamic Programming
 
-        # Initialize our variable using the first element.
+# Since we have to find the max or the min we will consider doing this with dynamic programming
+
+    def maxSubArray(self, nums: List[int]) -> int:
+        # Initializing current and max subarray
         current_subarray = max_subarray = nums[0]
-    
-        # Start with the 2nd element since we aready used the first one
+        
+        # Start interating from the 2nd element 
         for num in nums[1:]:
-            # If current_subarray is negative, throw it away. Otherwise, keep adding to it.
             current_subarray = max(num, current_subarray + num)
             max_subarray = max(max_subarray, current_subarray)
-
+            
         return max_subarray
