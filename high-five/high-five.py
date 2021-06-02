@@ -1,22 +1,59 @@
 class Solution:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
+#         mapping = {}
+#         result = []
+        
+#         for item in items:
+#             if item[0] in mapping:
+#                 mapping[item[0]].append(item[1])
+#             else:
+#                 mapping[item[0]] = [item[1]]
+                
+#         for x, y in mapping.items():
+#             y.sort(reverse=True)
+#             i = 0
+#             total = 0
+#             while i < 5 and i < len(y):
+#                 total += y[i]
+#                 i += 1
+                
+#             result.append([x, total//i])
+        
+#         result.sort()    
+    
+#         return result
+#         mapping = defaultdict(list)
+        
+#         for id, item in items:
+#             mapping[id].append(item)
+            
+#         result = []
+        
+#         for i in sorted(mapping.keys()):
+#             heapq.heapify(mapping[i])
+#             result.append([i, sum(heapq.nlargest(5, mapping[i])) // 5])
+            
+#         return result
+    
+    
         mapping = {}
         result = []
-        for x in items:                        # For every student, create a list of their scores using dictionary
-            if x[0] in mapping:
-                mapping[x[0]].append(x[1])
+        
+        # Adding all the values in the array
+        for item in items:
+            if item[0] in mapping:
+                mapping[item[0]].append(item[1])
             else:
-                mapping[x[0]] = [x[1]]
-
-        for x, y in mapping.items():            # Traverse through the dictionary elements and take average of sorted scores.
-            y.sort(reverse=True)
-            total = 0
+                mapping[item[0]] = [item[1]]
+                
+        for x, y in mapping.items():
+            y.sort(reverse = True)
             i = 0
-            while i < 5 and i < len(y):         # Since the problem statement doesn't say there will be at least 5 scores for each student, 
-                total += y[i]                   # instead of using sum() and dividing by 5, I used loop and divided by i.
+            total = 0
+            while i < 5 and i < len(y):
+                total += y[i]
                 i += 1
-            result.append([x, total//i])        # Store the average for every student id in result
-            result.sort()
+                
+            result.append([x, total//i])
             
-
-        return result
+        return sorted(result)
