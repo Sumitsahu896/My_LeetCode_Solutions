@@ -7,6 +7,8 @@
 
 class Solution:
     def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
+        if root is None:
+            return None
         successor = None
         
         while root:
